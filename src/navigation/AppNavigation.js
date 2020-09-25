@@ -1,15 +1,20 @@
 import React from 'react'
-import { NavigationContainer, ThemeColors } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Platform } from 'react-native'
-import { MainScreen } from '../screens/MainScreen'
-import { PostScreen } from '../screens/PostScreen'
 import { THEME } from '../theme'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet, Pressable } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'; 
+
+import { MainScreen } from '../screens/MainScreen'
+import { RecipeScreen } from '../screens/RecipeScreen'
+import { CreateScreen } from '../screens/CreateScreen'
+import { AboutScreen } from '../screens/AboutScreen'
+
 
 const Stack = createStackNavigator()
 
 function RootStack() {
+
   return (
     <Stack.Navigator
       initialRouteName="Main"
@@ -21,16 +26,34 @@ function RootStack() {
         options={{ 
           title: 'Список рецептов',
           headerStyle: {
-            backgroundColor: '#eee'
+            backgroundColor: THEME.HEADER_BACKGROUND
         },  }}
       />
       <Stack.Screen
-        name="Post"
-        component={PostScreen}
+        name="Recipe"
+        component={RecipeScreen}
         options={{ 
           title: 'Рецепт',
           headerStyle: {
-            backgroundColor: '#eee'
+            backgroundColor: THEME.HEADER_BACKGROUND
+        },  }}
+      />
+      <Stack.Screen
+        name="Create"
+        component={CreateScreen}
+        options={{ 
+          title: 'Создадим новый',
+          headerStyle: {
+            backgroundColor: THEME.HEADER_BACKGROUND
+        },  }}
+      />
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
+        options={{ 
+          title: 'О программе',
+          headerStyle: {
+            backgroundColor: THEME.HEADER_BACKGROUND
         },  }}
       />
     </Stack.Navigator>
@@ -44,9 +67,5 @@ export const AppNavigation = () => {
       </NavigationContainer>
     )}
 
-const styles = StyleSheet.create({
-      header: {
-        backgroundColor: '#eee'
-      }
-    })
+
     

@@ -1,22 +1,24 @@
 import React from 'react'
-import { View, StyleSheet, ImageBackground, Text } from 'react-native'
+import { View, StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
 
-export const Post = ({ post }) => {
+export const Post = ({ recipe, onOpen }) => {
   return (
-    <View style={styles.post}>
-      <ImageBackground style={styles.image} source={{ uri: post.img }}>
+    <View style={styles.wrapper}>
+      <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(recipe)}> 
+      <ImageBackground style={styles.image} source={{ uri: recipe.img }}>
         <View style={styles.textWrap}>
           <Text style={styles.title}>
-            {new Date(post.date).toLocaleDateString()}
+            {recipe.title}
           </Text>
         </View>
       </ImageBackground>
+      </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  post: {
+  wrapper: {
     marginBottom: 15,
     overflow: 'hidden'
   },
