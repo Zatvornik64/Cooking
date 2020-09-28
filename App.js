@@ -1,21 +1,32 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { AppLoading } from 'expo'
+import { Provider } from 'react-redux'
 import { AppNavigation } from './src/navigation/AppNavigation'
-import { bootstrap } from './src/bootstrap'
+import { initLoading } from './src/initLoading'
+import { store } from './src/redux/store'
 
 export default function App() {
-  const [isReady, setIsReady] = useState(false)
+  //const [isReady, setIsReady] = useState(false)
 
-  if (!isReady) {
+  // в SDK 39 Apploading вызывает ошибку "No native splash screen registered for provided activity"
+  // и пока будет работать напрямую 
+  /*if (!isReady) {
     return (
       <AppLoading
-        startAsync={bootstrap}
+        startAsync={initLoading}
         onFinish={() => setIsReady(true)}
         onError={err => console.log(err)}
       />
     )
-  }
+  }*/
 
-  return <AppNavigation />
+  useEffect(()=>{
+    initLoading()
+  }, [])
+
+  return (
+    <Provider store={store}>
+      <AppNavigation />
+    </Provider>
+  )
 }

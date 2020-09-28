@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "Cooking",
-    "slug": "Cooking",
+    "name": "Книга рецептов",
+    "slug": "CookingPad",
+    "privacy": "public", 
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#eee"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,9 +17,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
+    "android": {
+      "package": "com.github.Zatvornik64.Cooking",
+      "versionCode": 1
+    }, 
     "web": {
       "favicon": "./assets/favicon.png"
     }
