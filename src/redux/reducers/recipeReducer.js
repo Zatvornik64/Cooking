@@ -20,7 +20,7 @@ export const recipeReducer = (state=initialState, action) => {
             return { ...state, recipes: state.recipes.filter(item => item.id !== action.payload) }
 
         case CREATE_RECIPE: 
-            return { ...state, recipes: [{...action.payload}, ...state.recipes] }
+            return { ...state, recipes: [ ...state.recipes, {...action.payload}] }
             
         default: return state
     }

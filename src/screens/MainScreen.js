@@ -23,6 +23,7 @@ export const MainScreen = ({ navigation }) => {
   }, [dispatch])
   
   const recipes = useSelector(state => state.cooking.recipes);
+  recipes.sort((a,b) => b.id - a.id);
   const loading = useSelector(state => state.cooking.loading);
 
   if (loading) {

@@ -4,6 +4,7 @@ import { DB } from "../../db";
 
 export const loadRecipes = () => {
     return async dispatch => {
+        await DB.init();
         const recipes = await DB.getRecipes();
         dispatch({
             type: LOAD_RECIPE,

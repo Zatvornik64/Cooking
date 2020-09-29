@@ -16,7 +16,8 @@ export const BookedScreen = ({ navigation }) => {
     });
   }, [])
   
-  const recipes = useSelector(state => state.cooking.recipes)
+  const recipes = useSelector(state => state.cooking.recipes);
+  recipes.sort((a,b) => b.id - a.id);
 
   if (!recipes.filter(item => item.booked).length) {
     return (

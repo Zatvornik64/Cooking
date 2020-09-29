@@ -20,10 +20,6 @@ export default function App() {
     )
   }*/
 
-  useEffect(()=>{
-    initLoading()
-  }, [])
-
   return (
     <Provider store={store}>
       <AppNavigation />
