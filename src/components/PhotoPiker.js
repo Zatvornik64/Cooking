@@ -22,14 +22,17 @@ export const PhotoPiker = ({img, onPick}) => {
     const takePhoto = async () => {
         const hasPermissions = await askPermission();
         if (!hasPermissions) { return }
-        const img = await ImagePicker.launchCameraAsync({
+        ImagePicker.launchCameraAsync({
             quality: 0.7,
             allowsEditing: false,
             aspect: [16, 9],
+        })
+        .then (res => {
+            if (!res.cancelled) {
+                setImage(res.uri);
+                onPick(res.uri);
+            }
         });
-        //console.log(img)
-        setImage(img.uri);
-        onPick(img.uri);
     }
 
     return (
